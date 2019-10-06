@@ -3,7 +3,7 @@ package model;
 /**
  * This class contains the Deck object which will represent the card deck in the game. In the game, it will contain all of a user's usable cards.
  *
- * @author Brandon Kyle Last Updated: 10/1/2019
+ * @author Brandon Kyle Last Updated: 10/06/2019
  */
 
 import java.util.ArrayList;
@@ -14,9 +14,11 @@ public class Deck {
 
     public Deck(ArrayList<Card> _cards) {
         this.deckCards = _cards;
+        System.out.println("Deck module loaded.");
     }
 
     public Deck() {
+        System.out.println("Deck module loaded.");
     }
 
     /**
@@ -26,11 +28,37 @@ public class Deck {
      */
     @Override
     public String toString() {
-        String returnedString = "This user's deck contains the cards:\n";
-        for(int count=0; count<deckCards.size(); count++) {
-            returnedString += deckCards.get(count) + "\n";
+        String returnedString = "This deck contains the cards:\n";
+        for(int count=0; count<this.deckCards.size(); count++) {
+            returnedString += this.deckCards.get(count) + "\n";
         }
         return returnedString;
+    }
+
+    /**
+     * This method sorts the deck by the ID of the cards.
+     *
+     */
+    public void sortByID() {
+        ArrayList<Card> sortedDeck = new ArrayList<Card>();
+        int minIndex;
+        while(!this.deckCards.isEmpty()) {
+            minIndex = findMinIDIndex();
+            sortedDeck.add(this.deckCards.remove(minIndex));
+        }
+        this.deckCards = sortedDeck;
+    }
+
+    /**
+     * This method will shuffle the Cards that are in the Deck randomly.
+     *
+     */
+    public void shuffleCards() {
+        ArrayList<Card> shuffledDeck = new ArrayList<Card>();
+        while(!this.deckCards.isEmpty()) {
+            shuffledDeck.add(this.deckCards.remove((int) (Math.random() * this.deckCards.size())));
+        }
+        this.deckCards = shuffledDeck;
     }
 
     /**
@@ -40,10 +68,35 @@ public class Deck {
      */
     public int calculateTotalPower() {
         int totalPower = 0;
-        for(int count=0; count<deckCards.size(); count++) {
-            totalPower += deckCards.get(count).getPower();
+        for(int count=0; count<this.deckCards.size(); count++) {
+            totalPower += this.deckCards.get(count).getPower();
         }
         return totalPower;
+    }
+
+    /**
+     * This method will calculate the average power of the Cards in a Deck.
+     *
+     * @return
+     */
+    public int calculateAveragePower() {
+        // If there are no cards in the deck, 0 is returned so that an error is not thrown from dividing by zero.
+        if(deckCards.isEmpty()) {
+            System.out.println("There are no cards in the deck!");
+            return 0;
+        }
+        return this.calculateTotalPower()/deckCards.size();
+    }
+
+    /**
+     * This method combines two decks together and removes cards from the other deck.
+     *
+     * @param _deckToAdd
+     */
+    public void combineDecks(Deck _deckToAdd) {
+        while(!_deckToAdd.deckCards.isEmpty()) {
+            this.deckCards.add(_deckToAdd.deckCards.remove(0));
+        }
     }
 
     /**
@@ -81,7 +134,6 @@ public class Deck {
      * This method will add a Card to the Deck.
      *
      * @param _cardToAdd
-     * @return
      */
     public void addCard(Card _cardToAdd) {
         this.deckCards.add(_cardToAdd);
@@ -99,8 +151,23 @@ public class Deck {
         }
     }
 
+    /**
+     * This method finds the index of the card in the deck with the minimum ID and returns it. This is intended to be used as a helper method with sortByID().
+     *
+     * @return
+     */
+    private int findMinIDIndex() {
+        int minIndex = 0;
+        for(int count=0; count < this.deckCards.size(); count++) {
+            if(Integer.parseInt(this.deckCards.get(count).getID()) < Integer.parseInt(this.deckCards.get(minIndex).getID())) {
+                minIndex = count;
+            }
+        }
+        return minIndex;
+    }
+
 // ================= GETTERS ==========================
-    public ArrayList getDeckCards() {
+    public ArrayList<Card> getDeckCards() {
         return this.deckCards;
     }
 
