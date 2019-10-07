@@ -15,6 +15,7 @@ public class Card {
         this.cardName = _name;
         this.cardId = _id;
         this.cardPower = _power;
+        System.out.println("Card module loaded.");
     }
 
     /**

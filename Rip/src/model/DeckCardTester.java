@@ -3,11 +3,11 @@ package model;
 /**
  * This class performs some simple tests to ensure that both the Deck and Card classes are working correctly.
  *
- * @author Brandon Kyle Last Updated: 10/1/2019
+ * @author Brandon Kyle Last Updated: 10/06/2019
  */
 import java.util.ArrayList;
 public class DeckCardTester {
-    
+
     public static void main(String args[]) {
         Card testCardOne = new Card("Card One", "01", 1);
         Card testCardTwo = new Card("Card Two", "02", 2);
@@ -52,5 +52,13 @@ public class DeckCardTester {
         Deck deckFive = new Deck();
         deckFive.addCard(testCardOne);
         System.out.println("This is to test the Deck constructor that does not take an ArrayList of Cards as a parameter. Deck Five should only contain Card One. Deck Five:\n" + deckFive);
+        deckOne.combineDecks(deckTwo);
+        deckOne.combineDecks(deckThree);
+        deckOne.combineDecks(deckFour);
+        System.out.println("This is to test the combineDecks method.\n" + deckOne + deckTwo);
+        deckOne.sortByID();
+        System.out.println("This is to test the sortByID() method. All of the cards in deck one should be sorted in order.\n" + deckOne);
+        deckOne.shuffleCards();
+        System.out.println("This is to test the shuffleCards() method. The cards in deck one should be sorted randomly.\n" + deckOne);
     }
 }
