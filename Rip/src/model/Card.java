@@ -28,16 +28,20 @@ public class Card {
         return "This card's name is: " + this.cardName + ". This card's ID is " + this.cardId + ". This card's power is " + this.cardPower + ".";
     }
     /**
-     * This method will compare the power of two Cards. If this Card has more power, it will return true. If the parameter compareCard has more power, it will return false.
+     * This method will compare the power of two Cards. If this Card has more power, it will return 1. If the parameter compareCard has more power, it will return -1. If they have equal
+     * power, it will return 0.
      *
      * @param _compareCard
      * @return
      */
-    public boolean comparePower(Card _compareCard) {
+    public int comparePower(Card _compareCard) {
         if(this.cardPower > _compareCard.getPower()) {
-            return true;
+            return 1;
         }
-        return false;
+        if(this.cardPower < _compareCard.getPower()) {
+            return -1;
+        }
+        return 0;
     }
 
 // ================= GETTERS ==========================

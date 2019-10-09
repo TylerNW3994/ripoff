@@ -15,6 +15,10 @@ public class ComputerOpponent extends Contender {
         System.out.println("ComputerOpponent module loaded.");
     }
 
+    public ComputerOpponent() {
+        System.out.println("ComputerOpponent module loaded.");
+    }
+
     /**
      * This method will ask the AI to choose a card from _pickedCards number of Cards in its Deck. If it cannot draw that many Cards from its Deck but can draw some Cards,
      * it will draw all of the Cards that it can. If the Deck is empty, the method will end, the AI will not pick a Card, and null will be returned. Otherwise, the AI will draw
