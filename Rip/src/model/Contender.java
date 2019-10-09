@@ -5,6 +5,7 @@ package model;
  *
  * @author Brandon Kyle Last Updated 10/06/2019
  */
+import java.util.ArrayList;
 public class Contender {
 
     protected Deck myDeck;

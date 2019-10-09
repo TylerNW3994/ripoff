@@ -27,7 +27,7 @@ public class DeckCardTester {
         Deck deckOne = new Deck(arrayDeckOne);
         System.out.println("This is the toString of the Card class for Card One: " + testCardOne);
         System.out.println("");
-        System.out.println("Card Two is more powerful than Card One. Therefore, the following should be true. " + testCardTwo.comparePower(testCardOne));
+        System.out.println("Card Two is more powerful than Card One. Therefore, the following should be 1. " + testCardTwo.comparePower(testCardOne));
         System.out.println("");
         System.out.println("The first test deck will contain Card One to Card Four. This will check and see if that's the case.\n" + deckOne);
         deckOne.addCard(testCardFive);
