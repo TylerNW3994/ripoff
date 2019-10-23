@@ -1,7 +1,7 @@
 package db;
 /**
  * This implementation of the DBConnectorInterface interface is for MySQL databases.
- * @author iquigley
+ * @author iquigley with credentials added by Tyler
  */
 
 import java.sql.Connection;
@@ -22,11 +22,11 @@ public class MySQLConnector implements DBConnectorInterface{
     Statement statement = null;
 
     // For standard MySQL Ports.
-    static String host = "jdbc:mysql://localhost:3306/zombie_game";
+    static String host = "shareddb-f.hosting.stackcp.net";
     // For mac users of MAMP using the default MySQL port
     // static String host = "jdbc:mysql://localhost:8889/zombie_game";
-    static String user = "root";
-    static String password = "root";
+    static String user = "Ripoff-3639dbb2";
+    static String password = "0fw3phdeb9";
 
     public MySQLConnector() {
         // Initialize the connection at start-up.
